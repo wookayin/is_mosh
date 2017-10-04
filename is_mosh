@@ -22,5 +22,15 @@ is_mosh() {
     return 0;        # exit code 0: is mosh
 }
 
-excommand="$_"
-[[ "$(basename $0)" == "is_mosh" && "$(basename $excommand)" != "$0" ]] && is_mosh || true
+
+sourced=0
+if [ -n "$ZSH_EVAL_CONTEXT" ]; then
+  case $ZSH_EVAL_CONTEXT in *:file) sourced=1;; esac
+elif [ -n "$BASH_VERSION" ]; then
+  [ "$0" != "$BASH_SOURCE" ] && sourced=1
+else
+  case ${0##*/} in sh|dash) sourced=1;; esac
+fi
+if [[ $sourced == 0 ]]; then
+  is_mosh $@
+fi
