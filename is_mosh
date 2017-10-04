@@ -22,4 +22,5 @@ is_mosh() {
     return 0;        # exit code 0: is mosh
 }
 
-[[ $_ != $0 ]] && is_mosh
+excommand="$_"
+[[ "$(basename $0)" == "is_mosh" && "$(basename $excommand)" != "$0" ]] && is_mosh || true
