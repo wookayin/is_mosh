@@ -1,0 +1,25 @@
+#!/bin/bash
+
+has_ancestor_mosh() {
+    pstree -ps $1 | grep mosh-server
+}
+
+is_mosh() {
+    if [[ -n "$TMUX" ]]; then
+        # current shell is under tmux
+        tmux_current_session=$(tmux display-message -p '#S')
+        tmux_client_id=$(tmux list-clients -t "${tmux_current_session}" -F '#{client_pid}')
+        # echo $tmux_current_session $tmux_client_id
+        pid="$tmux_client_id"
+    else
+        pid="$$"
+    fi
+
+    mosh_found=$(has_ancestor_mosh $pid)   # or empty if not found
+    if [[ -z "$mosh_found" ]]; then
+        return 1;    # exit code 1: not mosh
+    fi
+    return 0;        # exit code 0: is mosh
+}
+
+[[ $_ != $0 ]] && is_mosh
