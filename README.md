@@ -1,7 +1,7 @@
 `is_mosh`
 =========
 
-Detects whether the current shell is running under mosh or not.
+Detects whether the current shell is running under [mosh][mosh] or not.
 
 It even works in a shell running inside tmux sessions, attached from a mosh session.
 
@@ -19,6 +19,9 @@ else
 fi
 ```
 
+Try `is_mosh -v` or `is_mosh --verbose` for printing something (only in case it is mosh).
+
+
 Why have you made this?
 -----------------------
 
@@ -30,3 +33,6 @@ LICENSE
 -------
 
 MIT
+
+
+[mosh]: https://mosh.org/
