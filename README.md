@@ -27,6 +27,7 @@ Why have you made this?
 
 `mosh` is cool, but doesn't support 24-bit true color.
 I needed a way to detect and disable true color feature on mosh environments.
+Please see [a stackexchange thread](https://unix.stackexchange.com/questions/395491/detect-whether-the-current-terminal-is-through-mosh-or-not) for the discussion.
 
 
 LICENSE

@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://github.com/wookayin/is_mosh/
 
 has_ancestor_mosh() {
     pstree -ps $1 | grep mosh-server
