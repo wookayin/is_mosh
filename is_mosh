@@ -26,11 +26,12 @@ is_mosh() {
 
     local mosh_found=$(has_ancestor_mosh $pid)   # or empty if not found
     if [[ -z "$mosh_found" ]]; then
+        test -n "$VERBOSE" && echo "not mosh"
         return 1;    # exit code 1: not mosh
+    else
+        test -n "$VERBOSE" && echo "mosh"
+        return 0;        # exit code 0: is mosh
     fi
-
-    test -n "$VERBOSE" && echo "mosh"
-    return 0;        # exit code 0: is mosh
 }
 
 
