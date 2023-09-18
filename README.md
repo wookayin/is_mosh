@@ -3,8 +3,11 @@
 
 Detects whether the current shell is running under [mosh][mosh] or not.
 
-It even works in a shell running inside tmux sessions, attached from a mosh session.
+It even works in a shell running inside tmux sessions, when attached from a mosh session.
 
+> [!IMPORTANT]
+> mosh 1.4+ now supports 24-bit color support (since October 2022) so you will probably no longer need this.
+> This project is archived, but `is_mosh` would still work as designed.
 
 Usage
 -----
@@ -23,10 +26,10 @@ Try `is_mosh -v` or `is_mosh --verbose` to see messages printed to stdout (`mosh
 
 NOTE: `pstree` and tmux 2.1+ are required ([#1][GH-1]).
 
-Why did you made this?
+Why did you make this?
 -----------------------
 
-`mosh` is awesome, but [doesn't support 24-bit true color][mosh-961].
+`mosh` is awesome, but [didn't support 24-bit true color][mosh-961] until mosh 1.4.0.
 I needed a way to detect and disable true color feature on mosh environments.
 To see an example of vimrc to automatically turn on/off termguicolors, see my [vimrc][vimrc-example].
 Please see [a stackexchange thread](https://unix.stackexchange.com/questions/395491/detect-whether-the-current-terminal-is-through-mosh-or-not) for the discussion.
